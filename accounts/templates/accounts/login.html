@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type = 'text/css' href="{% static 'styles/login.css' %}">
+</head>
+<body>
+    <div class="sign-in-form">
+        <img src="{% static 'images/user-icon.png' %}">
+        <h1>Login Here</h1>
+
+        <form action="login" method="post">
+            {% csrf_token %}
+            <input type="text"      name = "username" class="input-box" placeholder="Username">
+            <input type="password"  name = "password" class="input-box" placeholder="Password">
+            <p></p>
+            <div>
+                {% for message in messages%}
+                <h3 style="color: red;">{{message}}</h3>
+                {%endfor%}
+            </div>
+            <input type="submit" class = "signin-btn signin-btn1" value="Login">
+            <hr>
+            <p>Forgotten your password ? <a href="#"> Click Here</a></p>
+        </form>
+    </div>
+
+   
+</body>
+</html>
